@@ -27,4 +27,22 @@ warmStrategyCache({
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // TODO: Implement asset caching
+//https://web.dev/learn/pwa/workbox/
+
+const CASHE_NAME = "pwa-text-cashe"
+const urlsToCashe = [
+'/',
+'/index.html',
+'/css/styles.css',
+'/js/index.js',
+'/images/logo.png'
+]
+
+self.addEventListener("install", (event) => {
+  // const files = ["/offline.html"]; // you can add more resources here
+  event.waitUntil(
+    self.caches.open(CASHE_NAME).then((cache) => cache.addAll(urlsToCashe))
+  );
+});
+
 registerRoute();
