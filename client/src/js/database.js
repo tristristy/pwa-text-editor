@@ -22,6 +22,7 @@ export const putDb = async (content) => {
   //write to database
   const request = store.put({id:1, value:content});
   const result = await request;
+  return result.value;
 };
 
 // TODO: Add logic for a method that gets all the content from the database
